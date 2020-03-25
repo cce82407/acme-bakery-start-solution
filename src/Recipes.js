@@ -1,24 +1,24 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import RecipeCard from './RecipeCard';
+import React from 'react'
+import { connect } from 'react-redux'
+import RecipeCard from './RecipeCard'
 
-const Recipes = ({ recipes })=> {
+const Recipes = ({ recipes }) => {
   return (
     <ul>
       {
-        recipes.map( recipe => {
+        recipes.map(recipe => {
           return (
-            <RecipeCard name={ recipe.name } key={ recipe.id }/>
-          );
+            <RecipeCard {...recipe} key={recipe.id} />
+          )
         })
       }
     </ul>
-  );
-};
+  )
+}
 
-const mapStateToProps = ({ recipes})=> {
+const mapStateToProps = ({ recipes }) => {
   return {
     recipes
-  };
-};
-export default connect(mapStateToProps)(Recipes);
+  }
+}
+export default connect(mapStateToProps)(Recipes)
