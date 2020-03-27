@@ -2,10 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { deleteRecipe } from './store'
 
-const RecipeCard = ({ name, id, destroy }) => {
+const RecipeCard = ({ name, id, destroy, chef }) => {
   return (
     <li>
-      {name}
+      <h3>{name}</h3>
+      <div>Created by { chef && chef.name }</div>
       <button type="button" onClick={() => destroy(id)}>x</button>
     </li>
   )

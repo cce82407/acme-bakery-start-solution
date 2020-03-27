@@ -5,17 +5,26 @@ import thunks from 'redux-thunk'
 const LOAD_CHEFS = 'LOAD_CHEFS'
 const DELETE_RECIPE = 'DELETE_RECIPE'
 const LOAD_RECIPES = 'LOAD_RECIPES'
+const CREATE_CHEF = 'CREATE_CHEF';
+const CREATE_RECIPE = 'CREATE_RECIPE';
 
 const chefsReducer = (state = [], action) => {
   if (action.type === LOAD_CHEFS) {
     return action.chefs
   }
+  if(action.type === CREATE_CHEF){
+    return [action.chef, ...state];
+  }
   return state
 }
+
 
 const recipesReducer = (state = [], action) => {
   if (action.type === LOAD_RECIPES) {
     return action.recipes
+  }
+  if(action.type === CREATE_RECIPE){
+    return [action.recipe, ...state];
   }
   if (action.type === DELETE_RECIPE) {
     return state.filter(recipe => recipe.id !== action.id)
@@ -51,6 +60,34 @@ const _deleteRecipe = (id) => {
   }
 }
 
+const createChef = (chef) => {
+  return async (dispatch) => {
+    const response = await axios.post('/api/chefs', chef)
+    dispatch(_createChef(response.data));
+  }
+}
+
+const _createChef = (chef) => {
+  return {
+    type: CREATE_CHEF,
+    chef,
+  }
+}
+
+const createRecipe = (recipe) => {
+  return async (dispatch) => {
+    const response = await axios.post('/api/recipes', recipe)
+    dispatch(_createRecipe(response.data));
+  }
+}
+
+const _createRecipe = (recipe) => {
+  return {
+    type: CREATE_RECIPE,
+    recipe
+  }
+}
+
 const _loadRecipes = (recipes) => ({ type: LOAD_RECIPES, recipes })
 
 //thunks!
@@ -76,5 +113,4 @@ const deleteRecipe = (id) => {
   }
 }
 
-export { loadChefs, loadRecipes, deleteRecipe }
-
+export { loadChefs, loadRecipes, deleteRecipe, createChef, createRecipe }

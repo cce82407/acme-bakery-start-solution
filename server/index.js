@@ -17,6 +17,18 @@ app.get('/api/chefs', (req, res, next) => {
     .catch(next)
 })
 
+app.post('/api/chefs', (req, res, next) => {
+  Chef.create(req.body)
+    .then(chef => res.status(201).send(chef))
+    .catch(next)
+});
+
+app.post('/api/recipes', (req, res, next) => {
+  Recipe.create(req.body)
+    .then(recipe => res.status(201).send(recipe))
+    .catch(next)
+})
+
 app.get('/api/recipes', (req, res, next) => {
   Recipe.findAll()
     .then(recipes => res.send(recipes))
