@@ -3,10 +3,14 @@ import { connect } from 'react-redux'
 import { loadChef, updateChef } from './store'
 
 class SingleChef extends React.Component {
-  constructor() {
+  constructor(props) {
+    let name = ''
+    if (props.chef && props.chef.name) {
+      name = props.chef.name
+    }
     super()
     this.state = {
-      name: '',
+      name: name,
       error: ''
     }
     this.onSubmit = this.onSubmit.bind(this)
