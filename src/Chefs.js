@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import ChefCreate from './ChefCreate';
+import ChefCreate from './ChefCreate'
+import { Link } from 'react-router-dom'
 
 
 const Chefs = ({ processed }) => {
@@ -11,19 +12,19 @@ const Chefs = ({ processed }) => {
         {
           processed.map(chef => {
             return (
-              <li key={ chef.id }>
-                { chef.name }
+              <li key={chef.id}>
+                <Link to={`/chefs/${chef.id}`}> {chef.name}</Link>
                 <ul>
                   {
-                    chef.recipes.map( recipe => {
+                    chef.recipes.map(recipe => {
                       return (
-                        <li key={ recipe.id }>{ recipe.name }</li>
-                      );
+                        <li key={recipe.id}>{recipe.name}</li>
+                      )
                     })
                   }
                 </ul>
               </li>
-            );
+            )
           })
         }
       </ul>
@@ -32,9 +33,9 @@ const Chefs = ({ processed }) => {
 }
 
 const mapStateToProps = ({ chefs, recipes }) => {
-  const processed = chefs.map( chef => {
-    return {...chef, recipes: recipes.filter(recipe => recipe.chefId === chef.id) };
-  });
+  const processed = chefs.map(chef => {
+    return { ...chef, recipes: recipes.filter(recipe => recipe.chefId === chef.id) }
+  })
   return {
     processed
   }
