@@ -13,6 +13,9 @@ class App extends Component{
     return (
       <HashRouter>
         <h1>The Acme Bakery</h1>
+        <Route component = { Nav } />
+        <Route path ='/chefs' component = { Chefs } />
+        <Route path ='/recipes' component = { Recipes } />
       </HashRouter>
     );
   }
