@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const db = require('./db');
+const seed = reequire('./modules/index')
 
 app.use(express.json());
 
