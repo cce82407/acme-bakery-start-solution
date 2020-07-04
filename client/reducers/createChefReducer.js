@@ -1,17 +1,17 @@
 import { CREATE_CHEF } from "../actions/actions/index";
 
 const NEW_CHEF = {
-    firstName = "",
-    lastName = "",
+    id: null;
+    firstName: "",
+    lastName: "",
 };
 
-export default function createChefReducer (state = NEW_CHEF, action) {
+export default function newChef(state = NEW_CHEF, action) {
   switch (action.type) {
     case CREATE_CHEF:
       return {
           ...state, 
-          firstName: action.payload.firstName, 
-          lastName: action.payload.lastname
+          ...action.payload,
       };
     default:
       return state;

@@ -6,9 +6,7 @@ import { LOAD_RECIPES } from "../actions/index";
 function loadRecipes(recipes) {
   return {
     type: LOAD_RECIPES,
-    payload: {
-      recipes: recipes,
-    },
+    payload: [],
   };
 }
 

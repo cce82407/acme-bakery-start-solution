@@ -1,11 +1,14 @@
-import createChefReducer from "./createChefReducer";
-import createRecipeReducer from "./createRecipeReducer";
-import loadChefsReducer from "./loadChefsReducer";
-import loadRecipesReducer from "./loadRecipesReducer";
+import { combineReducers } from "redux";
+import newChef from "./createChefReducer";
+import newRecipe from "./createRecipeReducer";
+import chefs from "./loadChefsReducer";
+import recipes from "./loadRecipesReducer";
 
-export {
-  createChefReducer,
-  createRecipeReducer,
-  loadChefsReducer,
-  loadRecipesReducer,
-};
+const rootReducer = combineReducers({
+  newChef,
+  newRecipe,
+  chefs,
+  recipes,
+});
+
+export default rootReducer;

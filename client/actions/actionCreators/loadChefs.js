@@ -6,9 +6,7 @@ import { LOAD_CHEFS } from "../actions/index";
 function loadChefs(chefs) {
   return {
     type: LOAD_CHEFS,
-    payload: {
-      chefs: chefs,
-    },
+    payload: [],
   };
 }
 
