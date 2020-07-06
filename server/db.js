@@ -1,12 +1,7 @@
-const Sequelize = require('sequelize');
-const { UUID, UUIDV4, STRING } = Sequelize;
-const conn = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/acme_db');
+const Sequelize = require("sequelize");
 
+const db = new Sequelize(
+  process.env.DATABASE_URL || "postgres://localhost:5432/acme_db_"
+);
 
-const sync = async ()=> {
-};
-
-
-module.exports = {
-  sync,
-};
+module.exports = db;
