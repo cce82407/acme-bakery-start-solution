@@ -2,8 +2,7 @@ import { CREATE_CHEF } from "../actions/actions/index";
 
 const NEW_CHEF = {
   id: null,
-  firstName: "",
-  lastName: "",
+  name: "",
 };
 
 export default function newChef(state = NEW_CHEF, action) {

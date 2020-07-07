@@ -12,12 +12,13 @@ const Chef = db.define("chef", {
     type: STRING,
     allowNull: false,
     unique: true,
-  // },
-  // lastName: {
-  //   type: STRING,
-  //   allowNull: false,
-  //   unique: true,
-  // },
+    // },
+    // lastName: {
+    //   type: STRING,
+    //   allowNull: false,
+    //   unique: true,
+    // },
+  },
 });
 
 module.exports = Chef;

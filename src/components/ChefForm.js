@@ -1,21 +1,22 @@
 import React, { Component } from "react";
-import { createChef } from "../actions/actionCreators";
 
-class ChefForm extends Component {
+export default class ChefForm extends Component {
   constructor() {
     super();
     this.state = {
       name: "",
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
-  handleChange = ({ target }) => {
+  handleChange({ target }) {
     const { value } = target;
     this.setState({ name: value });
-  };
+  }
 
-  handleClick = () => {
-    dispatch(createChef(this.state.name));
-  };
+  handleClick() {
+    this.props.onClickHandler(this.state.name);
+  }
 
   render() {
     return (

@@ -10,5 +10,4 @@ const rootReducer = combineReducers({
   chefs,
   recipes,
 });
-
 export default rootReducer;

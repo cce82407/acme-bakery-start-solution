@@ -2,3 +2,7 @@ body {
   font-family: verdana;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+}

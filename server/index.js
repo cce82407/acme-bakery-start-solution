@@ -13,7 +13,7 @@ app.get("/", (req, res, next) =>
   res.sendFile(path.join(__dirname, "../index.html"))
 );
 
-app.get("api/chefs", async (req, res, next) => {
+app.get("/api/chefs", async (req, res, next) => {
   const chefs = await Chef.findAll({
     include: {
       model: Recipe,
@@ -23,7 +23,7 @@ app.get("api/chefs", async (req, res, next) => {
 });
 //eager loading: finding all of the chefs and all of the recipes that belong
 
-app.get("api/recipes", async (req, res, next) => {
+app.get("/api/recipes", async (req, res, next) => {
   const recipes = await Recipe.findAll({
     include: {
       model: Chef,
@@ -32,14 +32,14 @@ app.get("api/recipes", async (req, res, next) => {
   res.send({ recipes });
 });
 
-app.post("api/recipes", async (req, res, next) => {
+app.post("/api/recipes", async (req, res, next) => {
   const { name, chefId } = req.body;
   await Recipe.create({ name: name, chefId: chefId });
 });
 
-app.post("api/chefs", async (req, res, next) => {
+app.post("/api/chefs", async (req, res, next) => {
   const { name } = req.body;
-  await Recipe.create({ name: name });
+  await Chefs.create({ name: name });
 });
 //because of the relationship that we set up, sequelize creates a column on recipes called "chefId." This is how we will
 //know what chef belogns

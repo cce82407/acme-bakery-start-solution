@@ -1,8 +1,6 @@
 import axios from "axios";
-import routes from "../../utils/api";
-import { LOAD_CHEFS } from "../actions/index";
 
-//this is the action creator
+import { LOAD_CHEFS } from "../actions/index";
 function loadChefs(chefs) {
   return {
     type: LOAD_CHEFS,
@@ -14,7 +12,7 @@ function loadChefs(chefs) {
 export default function () {
   return async (dispatch) =>
     await axios
-      .get(routes.LOAD_CHEFS)
+      .get("/api/chefs")
       .then((res) =>
         dispatch(loadChefs(res.data)).catch((e) => console.log(e))
       );

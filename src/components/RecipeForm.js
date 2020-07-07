@@ -1,8 +1,5 @@
-import React from "react";
-import { connect } from "react-redux";
-import Form from "./ChefForm";
-import List from "../components/List";
-import { createRecipe } from "../actions/actionCreators";
+import React, { Component } from "react";
+import ChefDropdown from "./ChefDropdown";
 
 export default class RecipeForm extends Component {
   constructor() {
@@ -12,18 +9,19 @@ export default class RecipeForm extends Component {
       name: "",
       chef: this.props.chef,
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
-  handleChange = ({ target }) => {
+  handleChange({ target }) {
     const { value } = target;
     this.setState({ name: value });
-  };
+  }
 
-  handleClick = () => {
-    this.props.onClickHandler();
+  handleClick() {
     const recipeName = this.state.name;
     const chef = this.state.chef;
-    dispatch(createRecipe({ recipeName, chef }));
-  };
+    this.props.onClickHandler({ recipeName, chef });
+  }
 
   render() {
     return (
