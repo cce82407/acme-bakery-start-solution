@@ -6,7 +6,7 @@ const Chef = db.define("chef", {
   id: {
     primaryKey: true,
     type: UUID,
-    default: UUIDV4,
+    default: UUIDV4, // defaultValue?
   },
   name: {
     type: STRING,

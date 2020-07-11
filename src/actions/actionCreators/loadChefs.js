@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { LOAD_CHEFS } from "../actions/index";
-function loadChefs(chefs) {
+function loadChefs(chefs) { // load chefs will always return an empty array here
   return {
     type: LOAD_CHEFS,
     payload: [],
